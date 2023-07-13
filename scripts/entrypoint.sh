@@ -1,7 +1,7 @@
 #!/bin/sh
 
+cd /sub-web
+yarn serve >/dev/null 2>&1 &
+
 cd /base
 subconverter
-sleep 15
-cd /sub-web
-yarn serve
