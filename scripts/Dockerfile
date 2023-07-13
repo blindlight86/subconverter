@@ -45,6 +45,16 @@ RUN apk add --no-cache --virtual .build-tools git g++ build-base linux-headers c
     apk add --no-cache --virtual subconverter-deps pcre2 libcurl yaml-cpp libevent && \
     apk del .build-tools .build-deps
 
+# build subweb
+WORKDIR /
+RUN apk add --no-cache --virtual nodejs yarn git && \
+    git clone https://github.com/CareyWang/sub-web --depth=1 && \
+    cd sub-web && \
+    yarn install
+
+EXPOSE 25500 8080
 # set entry
 WORKDIR /base
 CMD subconverter
+WORKDIR /sub-web
+CMD yarn serve
