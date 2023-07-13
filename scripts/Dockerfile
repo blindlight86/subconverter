@@ -48,7 +48,7 @@ RUN apk add --no-cache --virtual .build-tools git g++ build-base linux-headers c
 # build subweb
 WORKDIR /
 RUN apk add --no-cache --virtual nodejs git && \
-    apk add --no-cache --virtual yarn && \
+    apk add --no-cache yarn && \
     git clone https://github.com/CareyWang/sub-web --depth=1 && \
     cd sub-web && \
     yarn install
