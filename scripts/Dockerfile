@@ -55,7 +55,7 @@ RUN apk add --no-cache nodejs git && \
 
 EXPOSE 25500 8080
 # set entry
-WORKDIR /base
-CMD subconverter
-WORKDIR /sub-web
-CMD yarn serve
+WORKDIR /
+COPY entrypoint.sh ./entrypoint.sh
+RUN chmod +x ./entrypoint.sh
+ENTRYPOINT ["./entrypoint.sh"]
